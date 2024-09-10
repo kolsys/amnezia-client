@@ -11,7 +11,7 @@ env:
 jobs:
   Build-Linux-Ubuntu:
     runs-on: ubuntu-20.04
-
+    if: false
     env:
       QT_VERSION: 6.6.2
       QIF_VERSION: 4.7
@@ -76,7 +76,7 @@ jobs:
 
   Build-Windows:
     runs-on: windows-latest
-
+    if: false
     env:
       QT_VERSION: 6.6.2
       QIF_VERSION: 4.7
@@ -138,7 +138,7 @@ jobs:
 
   Build-iOS:
     runs-on: macos-13
-
+    if: false
     env:
       QT_VERSION: 6.6.2
       CC: cc
@@ -294,7 +294,7 @@ jobs:
 
   Build-Android:
     runs-on: ubuntu-latest
-
+    if: false
     env:
       ANDROID_BUILD_PLATFORM: android-34
       QT_VERSION: 6.7.2

@@ -48,6 +48,8 @@ void ConnectionController::openConnection()
 
     emit m_vpnConnection->connectionStateChanged(Vpn::ConnectionState::Preparing);
 
+    qDebug() << "Check API config expiration. Config version: " << configVersion;
+
     if (configVersion == ApiConfigSources::Telegram
         && !m_serversModel->data(serverIndex, ServersModel::Roles::HasInstalledContainers).toBool()) {
         emit updateApiConfigFromTelegram();

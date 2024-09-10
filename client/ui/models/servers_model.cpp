@@ -720,12 +720,16 @@ bool ServersModel::isApiKeyExpired(const int serverIndex)
     auto publicKeyInfo = apiConfig.value(configKey::publicKeyInfo).toObject();
     const QString endDate = publicKeyInfo.value(configKey::endDate).toString();
     if (endDate.isEmpty()) {
+        qDebug() << "Expiration date is unknown. Set to +1 day";
+
         publicKeyInfo.insert(configKey::endDate, QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODate));
         apiConfig.insert(configKey::publicKeyInfo, publicKeyInfo);
         serverConfig.insert(configKey::apiConfig, apiConfig);
         editServer(serverConfig, serverIndex);
 
         return false;
+    } else {
+        qDebug() << "Expiration date is " << endDate;
     }
 
     auto endDateDateTime = QDateTime::fromString(endDate, Qt::ISODate).toUTC();
